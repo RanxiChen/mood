@@ -18,6 +18,7 @@ if __name__ == "__main__":
     parser.add_argument("-a","--avoidant", action="store_true", help="Set mood to avoidant:回避")
     parser.add_argument("-os","--overstimulated", action="store_true", help="Set mood to overstimulated:过度刺激")
     parser.add_argument("-af","--attension_fragmented", action="store_true", help="Set mood to attention fragmented:注意力分散")
+    parser.add_argument("-cs","--cognitive_stall", action="store_true", help="Set mood to cognitive stall:认知停滞")
     args = parser.parse_args()
 
     # First, we parse the command-line arguments to determine the selected mood
@@ -31,7 +32,8 @@ if __name__ == "__main__":
         args.anxious_alert,
         args.avoidant,
         args.overstimulated,
-        args.attension_fragmented
+        args.attension_fragmented,
+        args.cognitive_stall
     ]
     assert sum(flags) <= 1, "Please select only one mood at a time."
     # Here you would add the logic to handle each mood based on the parsed arguments
@@ -99,6 +101,8 @@ if __name__ == "__main__":
         current_mood = "os"
     elif(args.attension_fragmented):
         current_mood = "af"
+    elif(args.cognitive_stall):
+        current_mood = "cs"
     if current_mood != "x":
         add_mood(current_mood, moods)
         save_moods(moods)
