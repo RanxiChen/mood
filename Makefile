@@ -8,3 +8,6 @@ install:
 uninstall:
 	rm -f $(Install_Path)/mood
 	rm -rf $(Data_Path)
+
+update:
+	cp -r main.py $(Install_Path)/mood
